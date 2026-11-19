@@ -442,7 +442,7 @@ public class AppleMusicSourceManager extends MirroringAudioSourceManager impleme
 			paramIndex == -1 ? null : trackUrl.substring(0, paramIndex),
 			artistUrl,
 			artistArtwork,
-			attributes.get("previews").index(0).get("hlsUrl").text(),
+			attributes.get("previews").index(0).get("url").text(),
 			preview,
 			this
 		);

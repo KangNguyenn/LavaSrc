@@ -7,6 +7,7 @@ import com.sedmelluq.discord.lavaplayer.source.AudioSourceManager;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.tools.JsonBrowser;
 import com.sedmelluq.discord.lavaplayer.tools.Units;
+import com.sedmelluq.discord.lavaplayer.tools.io.PersistentHttpStream;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor;
@@ -56,7 +57,7 @@ public class YtdlpAudioTrack extends ExtendedAudioTrack {
 				return;
 			}
 
-			try (var stream = new YoutubePersistentHttpStream(httpInterface, streamUrl, contentLength)) {
+			try (var stream = new PersistentHttpStream(httpInterface, streamUrl, contentLength)) {
 				if (format.equals("webm")) {
 					processDelegate(new MatroskaAudioTrack(this.trackInfo, stream), executor);
 				} else {
